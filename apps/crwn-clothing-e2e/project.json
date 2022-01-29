@@ -1,0 +1,28 @@
+{
+  "root": "apps/crwn-clothing-e2e",
+  "sourceRoot": "apps/crwn-clothing-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/crwn-clothing-e2e/cypress.json",
+        "devServerTarget": "crwn-clothing:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "crwn-clothing:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/crwn-clothing-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["crwn-clothing"]
+}

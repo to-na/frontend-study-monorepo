@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "crwn-clothing": "apps/crwn-clothing",
+    "crwn-clothing-e2e": "apps/crwn-clothing-e2e"
+  }
+}
