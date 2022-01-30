@@ -3,13 +3,17 @@ import './app.scss';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
+import Header from './components/header/Header';
 
 export function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/shop" element={<ShopPage />} />
-    </Routes>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+      </Routes>
+    </div>
   );
 }
 
