@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
 
-import HomePage from './home-page/HomePage';
+import HomePage from './pages/home-page/HomePage';
 export function App() {
   return (
     <div>
