@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import MenuItem from './MenuItem';
+import ShopPage from './ShopPage';
 
-describe('MenuItem', () => {
+describe('ShopPage', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<MenuItem title="SHIRTS" imageUrl="" />);
+    const { baseElement } = render(<ShopPage />);
     expect(baseElement).toBeTruthy();
   });
 });
