@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import CollectionItem from './collection-item';
+import CollectionItem from './CollectionItem';
 
 describe('CollectionItems', () => {
   it('should render successfully', () => {

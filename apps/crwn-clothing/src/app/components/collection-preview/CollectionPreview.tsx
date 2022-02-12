@@ -1,5 +1,5 @@
 import './collection-preview.styles.scss';
-import CollectionItem from '../collection-item/collection-item';
+import CollectionItem from '../collection-item/CollectionItem';
 /* eslint-disable-next-line */
 export type CollectionPreviewProps = {
   title: string;
