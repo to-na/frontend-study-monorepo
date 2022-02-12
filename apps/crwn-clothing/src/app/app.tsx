@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import './app.scss';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import HomePage from './pages/home-page/HomePage';
@@ -40,7 +40,7 @@ class App extends React.Component<Props, State> {
           });
         });
       } else {
-        setCurrentUser({ userAuth });
+        setCurrentUser(userAuth);
       }
     });
   }
@@ -56,14 +56,26 @@ class App extends React.Component<Props, State> {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/signin" element={<SignInAndSignUpPage />} />
+          <Route
+            path="/signin"
+            element={
+              this.props.currentUser ? (
+                <Navigate to="/" />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Routes>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }: any) => ({
+  currentUser: user.currentUser,
+});
 const mapDispatchToProps = (dispatch: any) => ({
   setCurrentUser: (user: any) => dispatch(setCurrentUser(user)),
 });
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
