@@ -4,10 +4,13 @@ import SignIn from '../sign-in/SignIn';
 import './form-input.styles.scss';
 
 type FormInputProps = {
-  handleChange: any;
+  handleChange?: any;
+  onChange?: any;
   type: 'text' | 'email' | 'password' | undefined;
+  name?: string;
   label: string;
   value: string;
+  required?: boolean;
 };
 
 const FormInput = ({
