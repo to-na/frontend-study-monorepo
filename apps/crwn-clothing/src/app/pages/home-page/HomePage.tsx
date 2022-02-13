@@ -1,14 +1,13 @@
-import './homepage.styles.scss';
-
+import { HomePageStyle } from './HomePage.styles';
 import Directory from '../../components/directory/Directory';
 /* eslint-disable-next-line */
 export interface HomePageProps {}
 
 export const HomePage = (props: HomePageProps) => {
   return (
-    <div className="homepage">
+    <HomePageStyle>
       <Directory />
-    </div>
+    </HomePageStyle>
   );
 };
 

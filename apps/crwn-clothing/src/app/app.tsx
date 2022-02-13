@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import './app.scss';
 import React from 'react';
