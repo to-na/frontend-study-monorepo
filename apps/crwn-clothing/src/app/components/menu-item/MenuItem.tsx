@@ -1,5 +1,5 @@
 import './menu-item.styles.scss';
-
+import { useNavigate } from 'react-router-dom';
 /* eslint-disable-next-line */
 export interface MenuItemProps {
   title: string;
@@ -7,21 +7,22 @@ export interface MenuItemProps {
   size?: string;
 }
 
-export function MenuItem(props: MenuItemProps) {
+const MenuItem = ({ title, imageUrl, size, linkUrl }: any): any => {
+  const navigate = useNavigate();
   return (
-    <div className={`${props.size} menu-item`}>
+    <div className={`${size} menu-item`} onClick={() => navigate(`${linkUrl}`)}>
       <div
         style={{
-          backgroundImage: `url(${props.imageUrl})`
+          backgroundImage: `url(${imageUrl})`,
         }}
         className="background-image"
       />
       <div className="content">
-        <h1 className="title">{props.title.toUpperCase()}</h1>
+        <h1 className="title">{title.toUpperCase()}</h1>
         <span className="subtitle">SHOP NOW</span>
       </div>
     </div>
   );
-}
+};
 
 export default MenuItem;
