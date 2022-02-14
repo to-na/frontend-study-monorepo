@@ -14,10 +14,16 @@ import CheckoutPage from './pages/checkout-page/CheckoutPage';
 
 import Header from './components/header/Header';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments,
+} from './firebase/firebase.utils';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selector';
+import { selectCollectionsForPreview } from './redux/shop/shop.selector';
+
 type Props = Record<string, any>;
 type State = {
   currentUser: any;
@@ -34,7 +40,7 @@ class App extends React.Component<Props, State> {
 
   unsubscribeFromAuth = null as any;
   override componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef: any = await createUserProfileDocument(
@@ -50,6 +56,10 @@ class App extends React.Component<Props, State> {
       } else {
         setCurrentUser(userAuth);
       }
+      addCollectionAndDocuments(
+        'collections',
+        collectionsArray.map(({ title, items }: any) => ({ title, items }))
+      );
     });
   }
 
@@ -83,6 +93,7 @@ class App extends React.Component<Props, State> {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collectionsArray: selectCollectionsForPreview,
 });
 const mapDispatchToProps = (dispatch: any) => ({
   setCurrentUser: (user: any) => dispatch(setCurrentUser(user)),
